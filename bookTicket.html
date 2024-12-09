@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>Travio - Book Ticket</title>
+        <meta name="description" content="" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <!-- font awesome cdn -->
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+            integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
+        <!-- fonts -->
+        <link rel="stylesheet" href="font/fonts.css" />
+        <!-- normalize css -->
+        <link rel="stylesheet" href="css/normalize.css" />
+        <!-- custom css -->
+        <link rel="stylesheet" href="css/utility.css" />
+        <link rel="stylesheet" href="css/style.css" />
+        <link rel="stylesheet" href="css/responsive.css" />
+        <style>
+            .cards {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                width: 80%;
+            }
+
+            .card {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                margin-bottom: 20px;
+                box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+                border-radius: 10px;
+                width: 80%;
+                margin: 0 auto;
+            }
+
+            .card-img {
+                width: 80%;
+                height: auto;
+                max-width: 600px;
+                border-radius: 10px;
+                margin: 15px;
+            }
+
+            .card-title {
+                font-size: 1.5em;
+            }
+
+            @media (min-width: 768px) {
+                .card {
+                    flex-direction: row;
+                    text-align: left;
+                }
+
+                .card-content {
+                    margin-left: 20px;
+                }
+            }
+
+            .modal {
+                display: none;
+                position: fixed;
+                z-index: 1;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                overflow: auto;
+                background-color: rgb(0, 0, 0);
+                background-color: rgba(0, 0, 0, 0.4);
+                padding-top: 60px;
+            }
+
+            .modal-content {
+                background-color: #fefefe;
+                margin: 5% auto;
+                padding: 20px;
+                border: 1px solid #888;
+                width: 80%;
+                max-width: 500px;
+                border-radius: 10px;
+            }
+
+            .close {
+                color: #aaa;
+                float: right;
+                font-size: 28px;
+                font-weight: bold;
+            }
+
+            .close:hover,
+            .close:focus {
+                color: black;
+                text-decoration: none;
+                cursor: pointer;
+            }
+
+            .form-group {
+                margin-bottom: 15px;
+            }
+
+            .form-group label {
+                display: block;
+                margin-bottom: 5px;
+            }
+
+            .form-group input,
+            .form-group select {
+                width: 100%;
+                padding: 8px;
+                box-sizing: border-box;
+            }
+
+            .btn {
+                background-color: #4CAF50;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            .btn:hover {
+                background-color: #45a049;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- navbar  -->
+        <nav class="navbar">
+            <div class="container flex">
+                <a href="index.html" class="site-brand"> Tra<span>Vio</span> </a>
+
+                <button type="button" id="navbar-show-btn" class="flex">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div id="navbar-collapse">
+                    <button type="button" id="navbar-close-btn" class="flex">
+                        <i class="fas fa-times"></i>
+                    </button>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a href="index.html" class="nav-link">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="gallery.html" class="nav-link">Gallery</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="blog.html" class="nav-link">Blog</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="bookTicket.html" class="nav-link">Book Tickets</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="about.html" class="nav-link">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="contact.html" class="nav-link">Contact</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- end of navbar  -->
+
+        <!-- header -->
+        <header class="flex header-sm">
+            <div class="container">
+                <div class="header-title">
+                    <h1>Book Ticket</h1>
+                    <p>Book your tickets easily with Travio</p>
+                </div>
+            </div>
+        </header>
+        <!-- header -->
+
+        <!-- travel destination cards -->
+        <section id="destinations" class="py-4">
+            <div class="container">
+                <div class="title-wrap">
+                    <h2 class="sm-title">Popular Destinations</h2>
+                </div>
+                <div class="cards" style="width: 100%; margin: 0 auto;">
+                    <div class="card flex">
+                        <img src="https://images.pexels.com/photos/2166553/pexels-photo-2166553.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Paris" class="card-img" />
+                        <div class="card-content">
+                            <h3 class="card-title">Paris</h3>
+                            <p >Explore the beauty of Paris, the city of love. Visit the Eiffel Tower, Louvre Museum, and enjoy the exquisite French cuisine </p>
+                            <p>Cost: $1200</p>
+                            <button class="btn book-btn">Book Now</button>
+                        </div>
+                    </div>
+                    <div class="card flex">
+                        <img src="https://images.pexels.com/photos/1450372/pexels-photo-1450372.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Sydney" class="card-img" />
+                        <div class="card-content">
+                            <h3 class="card-title">Sydney</h3>
+                            <p>Discover the iconic Sydney Opera House and Harbour Bridge. Enjoy the beautiful beaches and vibrant city life.</p>
+                            <p>Cost: $1500</p>
+                            <button class="btn book-btn">Book Now</button>
+                        </div>
+                    </div>
+                    <div class="card flex">
+                        <img src="https://images.pexels.com/photos/4239546/pexels-photo-4239546.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Maldives" class="card-img" />
+                        <div class="card-content">
+                            <h3 class="card-title">Maldives</h3>
+                            <p>Relax in the tropical paradise of Maldives. Enjoy the crystal-clear waters, white sandy beaches, and luxurious resorts.</p>
+                            <p>Cost: $2000</p>
+                            <button class="btn book-btn">Book Now</button>
+                        </div>
+                    </div>
+                    <div class="card flex">
+                        <img src="https://images.pexels.com/photos/7079776/pexels-photo-7079776.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Switzerland" class="card-img" />
+                        <div class="card-content">
+                            <h3 class="card-title">Switzerland</h3>
+                            <p>Experience the stunning landscapes of Switzerland. Visit the Swiss Alps, beautiful lakes, and charming villages.</p>
+                            <p>Cost: $1800</p>
+                            <button class="btn book-btn">Book Now</button>
+                        </div>
+                    </div>
+                    <div class="card flex">
+                        <img src="https://images.pexels.com/photos/15304264/pexels-photo-15304264/free-photo-of-cruise-ships-in-charlotte-amalie.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Caribbean Cruise" class="card-img" />
+                        <div class="card-content">
+                            <h3 class="card-title">Caribbean Cruise</h3>
+                            <p>Enjoy a luxurious cruise in the Caribbean. Experience the beautiful islands, crystal-clear waters, and world-class amenities on board.</p>
+                            <p>Cost: $2500</p>
+                            <button class="btn book-btn">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end of travel destination cards -->
+
+        <!-- footer -->
+        <footer class="py-4">
+            <div class="container footer-row">
+                <div class="footer-item">
+                    <a href="index.html" class="site-brand"> Trip<span>Boss</span> </a>
+                    <p class="text">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
+                        voluptates maiores nam vitae iusto. Placeat rem sint voluptas natus
+                        exercitationem autem quod neque, odit laudantium reiciendis ipsa
+                        suscipit veritatis voluptate.
+                    </p>
+                </div>
+
+                <div class="footer-item">
+                    <h2>Follow us on:</h2>
+                    <ul class="social-links">
+                        <li>
+                            <a href="#">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fab fa-pinterest"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fab fa-google-plus"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="footer-item">
+                    <h2>Popular Places:</h2>
+                    <ul>
+                        <li><a href="#">Thailand</a></li>
+                        <li><a href="#">Australia</a></li>
+                        <li><a href="#">Maldives</a></li>
+                        <li><a href="#">Switzerland</a></li>
+                        <li><a href="#">Germany</a></li>
+                    </ul>
+                </div>
+
+                <div class="subscribe-form footer-item">
+                    <h2>Subscribe for Newsletter!</h2>
+                    <form class="flex">
+                        <input
+                            type="email"
+                            placeholder="Enter Email"
+                            class="form-control"
+                        />
+                        <input type="submit" class="btn" value="Subscribe" />
+                    </form>
+                </div>
+            </div>
+        </footer>
+        <!-- end of footer -->
+
+        <!-- Modal -->
+        <div id="bookingModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Book Your Ticket</h2>
+                <form id="bookingForm">
+                    <div class="form-group">
+                        <label for="name">Full Name:</label>
+                        <input type="text" id="name" name="name" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number:</label>
+                        <input type="tel" id="phone" name="phone" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="destination">Destination:</label>
+                        <input type="text" id="destination" name="destination" readonly />
+                    </div>
+                    <div class="form-group">
+                        <label for="age">Age:</label>
+                        <input type="number" id="age" name="age" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="date">Preferred Travel Date:</label>
+                        <input type="date" id="date" name="date" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="tickets">Number of Tickets:</label>
+                        <input type="number" id="tickets" name="tickets" required />
+                    </div>
+                    <button type="submit" class="btn">Submit</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- js -->
+        <script src="js/script.js"></script>
+        <script>
+            document.querySelectorAll('.book-btn').forEach(button => {
+                button.addEventListener('click', () => {
+                    const destination = button.parentElement.querySelector('h3').innerText;
+                    document.getElementById('destination').value = destination;
+                    document.getElementById('bookingModal').style.display = 'block';
+                });
+            });
+
+            document.querySelector('.close').addEventListener('click', () => {
+                document.getElementById('bookingModal').style.display = 'none';
+            });
+
+            window.onclick = function(event) {
+                if (event.target == document.getElementById('bookingModal')) {
+                    document.getElementById('bookingModal').style.display = 'none';
+                }
+            };
+
+            // Function to show toast message
+            function showToast(message, isSuccess) {
+                const toast = document.createElement('div');
+                toast.className = `toast ${isSuccess ? 'success' : 'error'}`;
+                toast.innerText = message;
+                document.body.appendChild(toast);
+                setTimeout(() => {
+                    toast.style.opacity = '0';
+                    setTimeout(() => {
+                        document.body.removeChild(toast);
+                    }, 500);
+                }, 3000);
+            }
+
+            // Add event listener to the booking form
+            document.getElementById('bookingForm').addEventListener('submit', function(event) {
+                event.preventDefault();
+                showToast('Booking successful!', true);
+                document.getElementById('bookingModal').style.display = 'none';
+            });
+
+            // Add styles for toast messages
+            const style = document.createElement('style');
+            style.innerHTML = `
+                .toast {
+                    position: fixed;
+                    top: 90px;
+                    right: 20px;
+                    padding: 10px 20px;
+                    background-color: #333;
+                    color: #fff;
+                    border-radius: 5px;
+                    opacity: 1;
+                    transition: opacity 0.5s ease;
+                    z-index: 1000;
+                }
+                .toast.success {
+                    background-color: #4CAF50;
+                }
+                .toast.error {
+                    background-color: #f44336;
+                }
+            `;
+            document.head.appendChild(style);
+        </script>
+    </body>
+</html></footer></div>
